@@ -37,11 +37,11 @@ function Header() {
   ];
 
   return (
-    <header className="py-3 border-b border-gray-200 bg-white w-full">
+    <header className="py-2 border-b border-gray-200 bg-white w-full">
       <Container>
         <nav className="flex">
           <div className="mr-4">
-            <Link className="text-[19px]" to="/">
+            <Link className="" to="/">
               <Logo width="70px" />
             </Link>
           </div>
@@ -51,7 +51,7 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="inline-block font-light mr-2 px-4 py-4 text-[19px] cursor-pointer duration-200 bg-blue-500 hover:bg-blue-400 text-white rounded-full"
+                    className="font-semibold mr-2 px-3 py-4 text-lg cursor-pointer duration-200 text-gray-800 hover:text-gray-600"
                   >
                     {item.name}
                   </button>

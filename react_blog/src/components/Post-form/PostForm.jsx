@@ -7,50 +7,63 @@ import { useSelector } from "react-redux";
 
 function PostForm({ post }) {
   const navigate = useNavigate();
-  const { register, handleSubmit, watch, setValue, control, getValues } =
-    useForm({
-      defaultValues: {
-        title: post?.title || "",
-        slug: post?.slug || "",
-        content: post?.content || "",
-        status: post?.status || "active",
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    control,
+    getValues,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      title: post?.title || "",
+      slug: post?.slug || "",
+      content: post?.content || "",
+      status: post?.status || "active",
+    },
+  });
 
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
-    if (post) {
-      const file = data.image[0]
-        ? await appwriteService.uploadFile(data.image[0])
-        : null;
+    try {
+      const { image, ...postFields } = data; // strip the raw FileList out — never send this to Appwrite
 
-      if (file) {
-        appwriteService.deleteFile(post.featuredimage);
-      }
+      if (post) {
+        const file = image?.[0]
+          ? await appwriteService.uploadFile(image[0])
+          : null;
 
-      const updatedPost = await appwriteService.updatePost(post.$id, {
-        ...data,
-        featuredimage: file ? file.$id : undefined,
-      });
+        if (file) {
+          await appwriteService.deleteFile(post.featuredimage);
+        }
 
-      if (updatedPost) {
-        navigate(`/post/${updatedPost.$id}`);
-      }
-    } else {
-      const file = await appwriteService.uploadFile(data.image[0]);
-
-      if (file) {
-        const fileId = file.$id;
-        data.featuredimage = fileId;
-        const dbPost = await appwriteService.createPost({
-          ...data,
-          userId: userData.$id,
+        const updatedPost = await appwriteService.updatePost(post.$id, {
+          ...postFields,
+          featuredimage: file ? file.$id : post.featuredimage,
         });
-        if (dbPost) {
-          navigate(`/post/${dbPost.$id}`);
+
+        if (updatedPost) {
+          navigate(`/post/${updatedPost.$id}`);
+        }
+      } else {
+        const file = await appwriteService.uploadFile(image[0]);
+
+        if (file) {
+          const dbPost = await appwriteService.createPost({
+            ...postFields,
+            featuredimage: file.$id,
+            userId: userData.$id,
+          });
+
+          if (dbPost) {
+            navigate(`/post/${dbPost.$id}`);
+          }
         }
       }
+    } catch (error) {
+      console.error("Post submit failed:", error);
     }
   };
 
@@ -79,43 +92,59 @@ function PostForm({ post }) {
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
         <Input
-          label="Title :"
           placeholder="Title"
-          className="mb-4"
-          {...register("title", { required: true })}
+          className="mb-4 font-light text-[13px] border border-gray-200"
+          {...register("title", { required: "Title is required" })}
         />
+        {errors.title && (
+          <p className="text-red-500 text-xs -mt-3 mb-3">
+            {errors.title.message}
+          </p>
+        )}
+
         <Input
-          label="Slug :"
           placeholder="Slug"
-          className="mb-4"
-          {...register("slug", { required: true })}
+          className="mb-4 px-2 text-[13px] font-light border border-gray-200"
+          {...register("slug", { required: "Slug is required" })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
               shouldValidate: true,
             });
           }}
         />
+        {errors.slug && (
+          <p className="text-red-500 text-xs -mt-3 mb-3">
+            {errors.slug.message}
+          </p>
+        )}
+
         <RTE
-          label="Content :"
           name="content"
           control={control}
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="w-1/3 text-[15px] text-start font-light">
         <Input
-          label="Featured Image :"
+          label="Featured Image"
           type="file"
-          className="mb-4"
+          className="mb-4 text-[13px] font-light bg-white rounded-xl"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
+          {...register("image", {
+            required: post ? false : "Featured image is required",
+          })}
         />
+        {errors.image && (
+          <p className="text-red-500 text-xs -mt-3 mb-3">
+            {errors.image.message}
+          </p>
+        )}
         {post && (
           <div className="w-full mb-4">
             <img
               src={appwriteService.getFilePreview(post.featuredimage)}
               alt={post.title}
-              className="rounded-lg"
+              className="rounded-2xl"
             />
           </div>
         )}
@@ -128,9 +157,10 @@ function PostForm({ post }) {
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          className="w-full text-[15px]"
+          disabled={isSubmitting}
         >
-          {post ? "Update" : "Submit"}
+          {isSubmitting ? "Saving..." : post ? "Update" : "Submit"}
         </Button>
       </div>
     </form>

@@ -17,13 +17,13 @@ export class Service {
   async createPost({ title, slug, content, featuredimage, status, userId }) {
     try {
       return await this.databases.createDocument(
-        conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
+        config.appwriteDatabaseId,
+        config.appwriteCollectionId,
         slug,
         {
           title,
           content,
-          featuredImage,
+          featuredimage,
           status,
           userId,
         },
