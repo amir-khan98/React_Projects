@@ -12,18 +12,19 @@ function AllPosts() {
     });
   }, []);
 
-  return;
+  return (
   <div className="w-full py-8">
     <Container>
       <div className="flex flex-wrap">
         {posts.map((post) => (
-          <div className="p-2 w-1" key={post.$id}>
-            <PostCard post={post} />
+          <div className="p-2 w-1/4" key={post.$id}>
+            <PostCard {...post} />
           </div>
         ))}
       </div>
     </Container>
-  </div>;
+  </div>
+  );
 }
 
 export default AllPosts;
