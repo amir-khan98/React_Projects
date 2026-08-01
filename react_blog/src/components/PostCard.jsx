@@ -1,26 +1,45 @@
-import React from 'react'
-import appwriteService from '../appwrite/configuration'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
+import appwriteService from "../appwrite/configuration";
 
-function PostCard({
-    $id,
-    title,
-    featuredimage
-}) {
-  return (
-   <Link to={`/post/${$id}`}>
-    <div className='w-full bg-gray-100 rounded-3xl px-4'>
-        <div className='w-full justify-center mb-4'>
-            <img src={appwriteService.getFilePreview(featuredimage)} alt={title}
-            className="rounded-2xl" />
-        </div>
-        <h2 className='text-2xl font-bold'
-        >{title}
-        </h2>
-
-    </div>
-   </Link>
-  )
+function stripHtml(html) {
+  return html
+    ?.replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-export default PostCard
+function PostCard({ $id, title, featuredimage, content }) {
+  const excerpt = stripHtml(content);
+
+  return (
+    <Link to={`/post/${$id}`} className="group block h-full">
+      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-200 hover:shadow-lg">
+        <div className="h-48 w-full overflow-hidden bg-gray-100">
+          <img
+            src={appwriteService.getFilePreview(featuredimage)}
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div className="flex flex-1 flex-col gap-2 p-5">
+          <h2 className="line-clamp-2 text-lg font-bold text-gray-800">
+            {title}
+          </h2>
+          {excerpt && (
+            <p className="line-clamp-2 flex-1 text-sm font-light text-gray-600">
+              {excerpt}
+            </p>
+          )}
+          <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 group-hover:text-blue-500">
+            Read more
+            <FaArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default PostCard;
