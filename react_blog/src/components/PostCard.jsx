@@ -23,12 +23,12 @@ function PostCard({ $id, title, featuredimage, content }) {
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-1 flex-col gap-2 p-5">
-          <h2 className="line-clamp-2 text-lg font-bold text-gray-800">
+        <div className="flex flex-1 flex-col gap-2 p-4">
+          <h2 className="text-start line-clamp-2 text-lg font-bold text-gray-800">
             {title}
           </h2>
           {excerpt && (
-            <p className="line-clamp-2 flex-1 text-sm font-light text-gray-600">
+            <p className="text-start line-clamp-2 flex-1 text-sm font-light text-gray-600">
               {excerpt}
             </p>
           )}

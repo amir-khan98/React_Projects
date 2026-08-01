@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaPen, FaTrash } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/configuration";
 import { Button, Container } from "../components";
@@ -44,25 +45,30 @@ export default function Post() {
 
           {isAuthor && (
             <div className="absolute right-4 top-4 flex gap-2">
-              <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="px-4 py-2 text-sm">
-                  Edit
-                </Button>
-              </Link>
-              <Button
-                bgColor="bg-red-500"
-                onClick={deletePost}
-                className="px-4 py-2 text-sm"
+              <Link
+                to={`/edit-post/${post.$id}`}
+                aria-label="Edit post"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white shadow-md transition-colors duration-200 hover:bg-green-600"
               >
-                Delete
-              </Button>
+                <FaPen className="h-4 w-4" />
+              </Link>
+              <button
+                type="button"
+                onClick={deletePost}
+                aria-label="Delete post"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500 text-white shadow-md transition-colors duration-200 hover:bg-red-600"
+              >
+                <FaTrash className="h-4 w-4" />
+              </button>
             </div>
           )}
         </div>
         <div className="w-full mb-6">
-          <h1 className="text-3xl font-bold text-gray-800">{post.title}</h1>
+          <h1 className="text-start text-3xl font-bold text-gray-800">
+            {post.title}
+          </h1>
         </div>
-        <div className="browser-css">{parse(post.content)}</div>
+        <div className="text-start browser-css">{parse(post.content)}</div>
       </Container>
     </div>
   ) : null;

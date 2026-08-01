@@ -11,11 +11,12 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
         control={control}
         render={({ field: { onChange } }) => (
           <Editor
-          apiKey="j8zeeggxwum1s0a4i8xq2uu5x7awxu9p07py60ryk7nj74je"
+            apiKey="j8zeeggxwum1s0a4i8xq2uu5x7awxu9p07py60ryk7nj74je"
             initialValue={defaultValue}
             init={{
               height: 500,
               menubar: true,
+              paste_as_text: true,
               plugins: [
                 "image",
                 "advlist",
