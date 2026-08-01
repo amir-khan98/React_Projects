@@ -11,7 +11,7 @@ A full-stack, feature-rich blogging application built with **React** on the fron
 - 🖼️ **Featured Image Support**: Upload, store, and display cover images for blog posts using Appwrite Bucket Storage.
 - 🛠️ **CRUD Operations**: Full Create, Read, Update, and Delete functionality for blog posts.
 - ⚡ **State Management**: Centralized user authentication and UI state managed with Redux Toolkit.
-- 🎨 **Responsive UI**: Clean and modern user interface styled with Tailwind CSS. Only for Browser user, not responsive for most mobile user. 
+- 🎨 **Responsive UI**: Clean and modern user interface styled with Tailwind CSS. And responsive on all devices.
 
 ---
 
