@@ -30,7 +30,7 @@ function Login() {
   return (
     <div className="flex items-center justify-center w-full">
       <div
-        className={`mx-auto w-full max-w-lg rounded-2xl border border-white/40 bg-white/60 p-10 shadow-sm shadow-black/5 backdrop-blur-xl `}
+        className={`mx-auto w-full max-w-lg rounded-2xl border border-white/40 bg-white/60 p-6 sm:p-10 shadow-sm shadow-black/5 backdrop-blur-xl `}
       >
         <div className="flex items-center justify-center">
           <span className="inline-flex items-center justify-center w-full `max-w-[100px]`">
