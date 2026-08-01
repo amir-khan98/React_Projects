@@ -24,16 +24,15 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen items-center justify-center text-center font-bold m-4 text-3xl bg-white text-gray-800">
-      React Blog
-      <div className="w-full block">
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </div>
+    <div className="min-h-screen items-center justify-center m-4 bg-white text-gray-800">
+  <div className="w-full block">
+    <Header />
+    <main>
+      <Outlet />
+    </main>
+    <Footer />
+  </div>
+</div>
   ) : null;
 }
 

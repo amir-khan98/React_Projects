@@ -20,7 +20,7 @@ function Header() {
   ];
 
   return (
-    <header className="py-2 border-b border-gray-200 bg-white w-full">
+    <header className="py-2 border-b border-gray-200 bg-white w-full sticky top-0 z-50">
       <Container>
         <nav className="flex items-center">
           <div className="flex items-center gap-4 mr-4">
@@ -48,7 +48,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => navigate("/login")}
-                    className=" inline-block font-light mr-2 px-5 py-4 text-[13px] cursor-pointer bg-gray-100 duration-200 rounded-3xl text-blue-600 border border-gray-200"
+                    className=" inline-block font-light mr-2 px-6 py-4 text-[13px] cursor-pointer bg-gray-100 duration-200 rounded-3xl text-blue-600 border border-gray-200"
                   >
                     Login
                   </button>
@@ -56,7 +56,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => navigate("/signup")}
-                    className="inline-block font-light mr-1 px-4 py-4 text-[13px]  duration-200 bg-blue-500 hover:bg-blue-300 text-white rounded-3xl"
+                    className="inline-block font-light mr-1 px-5 py-4 text-[13px]  duration-200 bg-blue-500 hover:bg-blue-300 text-white rounded-3xl"
                   >
                     Signup
                   </button>
