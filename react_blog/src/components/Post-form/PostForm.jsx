@@ -89,7 +89,7 @@ function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap rounded-2xl border border-white/40 bg-white/60 p-6 shadow-sm shadow-black/5 backdrop-blur-xl sm:p-8">
       <div className="w-2/3 px-2">
         <Input
           placeholder="Title"

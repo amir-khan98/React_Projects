@@ -20,7 +20,7 @@ function Header() {
   ];
 
   return (
-    <header className="py-2 border-b border-gray-200 bg-white w-full sticky top-0 z-50">
+    <header className="py-2 border-b border-white/40 bg-white/60 backdrop-blur-xl shadow-sm shadow-black/5 w-full sticky top-0 z-50">
       <Container>
         <nav className="flex items-center">
           <div className="flex items-center gap-4 mr-4">

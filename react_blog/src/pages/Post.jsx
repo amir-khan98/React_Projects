@@ -36,11 +36,11 @@ export default function Post() {
   return post ? (
     <div className="py-8">
       <Container>
-        <div className="relative mb-8 w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
+        <div className="relative mb-8 w-full overflow-hidden rounded-2xl border border-white/40 bg-gray-100 shadow-sm shadow-black/5">
           <img
             src={appwriteService.getFilePreview(post.featuredimage)}
             alt={post.title}
-            className="h-72 w-full object-cover sm:h-96 `md:h-[500px]`"
+            className="h-75 w-full object-cover sm:h-96 `md:h-[520px]`"
           />
 
           {isAuthor && (
@@ -63,12 +63,12 @@ export default function Post() {
             </div>
           )}
         </div>
-        <div className="w-full mb-6">
-          <h1 className="text-start text-3xl font-bold text-gray-800">
+        <div className="rounded-2xl border border-white/40 bg-white/60 p-6 shadow-sm shadow-black/5 backdrop-blur-xl sm:p-10">
+          <h1 className="mb-6 text-3xl font-bold text-gray-800">
             {post.title}
           </h1>
+          <div className="browser-css">{parse(post.content)}</div>
         </div>
-        <div className="text-start browser-css">{parse(post.content)}</div>
       </Container>
     </div>
   ) : null;

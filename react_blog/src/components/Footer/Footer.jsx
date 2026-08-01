@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
 function Footer() {
   return (
-    <section className="w-full relative overflow-hidden py-10 bg-white borter-t border-b border-gray-100 text-black">
+    <section className="w-full relative overflow-hidden py-10 bg-white/60 backdrop-blur-xl border-t border-white/40 text-black">
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-[15px] font-light">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">

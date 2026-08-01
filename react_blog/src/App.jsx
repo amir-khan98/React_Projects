@@ -24,15 +24,15 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen items-center justify-center m-4 bg-white text-gray-800">
-  <div className="w-full block">
-    <Header />
-    <main>
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-</div>
+    <div className="min-h-screen items-center justify-center m-4 `bg-gradient-to-b` from-gray-50 to-gray-200 text-gray-800">
+      <div className="w-full block">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
   ) : null;
 }
 

@@ -15,7 +15,8 @@ function PostCard({ $id, title, featuredimage, content }) {
 
   return (
     <Link to={`/post/${$id}`} className="group block h-full">
-      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-200 hover:shadow-lg">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/80 hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px `bg-gradient-to-r` from-transparent via-white to-transparent" />
         <div className="h-48 w-full overflow-hidden bg-gray-100">
           <img
             src={appwriteService.getFilePreview(featuredimage)}
