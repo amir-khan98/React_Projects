@@ -10,14 +10,12 @@ function Header() {
 
   const navItems = [
     {
-      name: "All Posts",
-      slug: "/all-posts",
-      active: authStatus,
-    },
-    {
       name: "Add Post",
       slug: "/add-post",
       active: authStatus,
+      // same look as the "Login" button
+      className:
+        "font-light mr-2 px-4 py-4 text-[13px] cursor-pointer bg-gray-100 duration-200 rounded-3xl text-blue-600 border border-gray-200",
     },
   ];
 
@@ -35,6 +33,14 @@ function Header() {
             >
               Home
             </Link>
+            {authStatus && (
+              <Link
+                to="/all-posts"
+                className="font-semibold text-lg text-gray-800 hover:text-gray-600 duration-200"
+              >
+                All Posts
+              </Link>
+            )}
           </div>
           <ul className="flex items-center ml-auto">
             {!authStatus && (
@@ -42,7 +48,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => navigate("/login")}
-                    className="font-light mr-3 px-4 py-2 bg-blue-50 text-lg cursor-pointer duration-200 rounded-2xl text-blue-600"
+                    className=" inline-block font-light mr-2 px-5 py-4 text-[13px] cursor-pointer bg-gray-100 duration-200 rounded-3xl text-blue-600 border border-gray-200"
                   >
                     Login
                   </button>
@@ -50,7 +56,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => navigate("/signup")}
-                    className="font-light px-4 py-2 bg-blue-600 hover:bg-blue-500 text-lg cursor-pointer duration-200 rounded-2xl text-white"
+                    className="inline-block font-light mr-1 px-4 py-4 text-[13px]  duration-200 bg-blue-500 hover:bg-blue-300 text-white rounded-3xl"
                   >
                     Signup
                   </button>
@@ -62,7 +68,7 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="font-semibold mr-2 px-3 py-4 text-lg cursor-pointer duration-200 text-gray-800 hover:text-gray-600"
+                    className={item.className}
                   >
                     {item.name}
                   </button>
