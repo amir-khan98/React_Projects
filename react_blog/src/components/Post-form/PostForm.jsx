@@ -90,7 +90,7 @@ function PostForm({ post }) {
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap rounded-2xl border border-white/40 bg-white/60 p-6 shadow-sm shadow-black/5 backdrop-blur-xl sm:p-8">
-      <div className="w-2/3 px-2">
+      <div className="w-full md:w-2/3 px-2">
         <Input
           placeholder="Title"
           className="mb-4 font-light text-[13px] border border-gray-200"
@@ -124,7 +124,7 @@ function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 text-[15px] text-start font-light">
+      <div className="w-full md:w-1/3 text-[15px] text-start font-light mt-4 md:mt-0">
         <Input
           label="Featured Image"
           type="file"
