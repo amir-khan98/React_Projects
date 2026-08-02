@@ -12,11 +12,16 @@ A full-stack, feature-rich blogging application built with **React** on the fron
 - 🖼️ **Featured Image Support**: Upload, store, and display cover images for blog posts using Appwrite Bucket Storage.
 - 🛠️ **CRUD Operations**: Full Create, Read, Update, and Delete functionality for blog posts.
 - ⚡ **State Management**: Centralized user authentication and UI state managed with Redux Toolkit.
+<<<<<<< HEAD
 - 🎨 **Responsive UI**: Clean and modern user interface styled with Tailwind CSS. Only for Browser user, not responsive for most mobile user. 
+=======
+- 🎨 **Responsive UI**: Clean and modern user interface styled with Tailwind CSS. And responsive on all devices.
+>>>>>>> 4e3390ff0452abaec1b59706593500ba2c983261
 
 ---
 
 ## 🛠️ Tech Stack
+<<<<<<< HEAD
 
 - **Frontend**: React.js, React Router, Redux Toolkit, Tailwind CSS, React Hook Form
 - **Editor**: TinyMCE / Real-time RTE component
@@ -36,3 +41,23 @@ Special thanks to:
 
 @hiteshchoudhary for invaluable guidance on integrating Appwrite as a backend service, mastering production-level React workflows, and advanced React.js concepts.
 
+=======
+
+- **Frontend**: React.js, React Router, Redux Toolkit, Tailwind CSS, React Hook Form
+- **Editor**: TinyMCE / Real-time RTE component
+- **Backend-as-a-Service (BaaS)**: Appwrite (Authentication, Database, Storage)
+
+---
+
+Project Highlights & Architecture
+Service Layer Pattern: Appwrite interactions (Auth, Database, Storage) are abstracted into modular service classes for clean separation of concerns.
+
+Form Handling & Validation: Implemented using react-hook-form for efficient inputs and validation.
+
+Protected Routes: Custom authentication wrappers to guard private pages from unauthenticated access.
+
+🙌 Credits & Acknowledgments
+Special thanks to:
+
+@hiteshchoudhary for invaluable guidance on integrating Appwrite as a backend service, mastering production-level React workflows, and advanced React.js concepts.
+>>>>>>> 4e3390ff0452abaec1b59706593500ba2c983261

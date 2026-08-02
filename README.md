@@ -2,6 +2,7 @@
 # React_Projects
 =======
 # React_Projects
+<<<<<<< HEAD
 # 📝 React & Appwrite Blog Application
 
 A full-stack, feature-rich blogging application built with **React** on the frontend and powered by **Appwrite** for backend services. Users can register, log in, create, edit, and delete their blog posts using an integrated rich text editor.
@@ -38,3 +39,5 @@ Special thanks to:
 
 @hiteshchoudhary for invaluable guidance on integrating Appwrite as a backend service, mastering production-level React workflows, and advanced React.js concepts.
 >>>>>>> b715c3e7d370ceb54374d32e4586e1657c3a5845
+=======
+>>>>>>> 4e3390ff0452abaec1b59706593500ba2c983261
