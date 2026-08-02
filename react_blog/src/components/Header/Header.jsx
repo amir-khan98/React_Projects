@@ -12,7 +12,7 @@ function Header() {
 
   const navItems = [
     {
-      name: "Add Post",
+      name: "Add Blog",
       slug: "/add-post",
       active: authStatus,
       className:
@@ -44,7 +44,7 @@ function Header() {
                 to="/all-posts"
                 className="hidden md:inline font-semibold text-lg text-gray-800 hover:text-gray-600 duration-200"
               >
-                All Posts
+                All Blogs
               </Link>
             )}
           </div>
