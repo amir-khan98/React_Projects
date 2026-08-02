@@ -17,7 +17,6 @@ function Home() {
     appwriteService
       .getPosts([
         Query.equal("status", "active"),
-        Query.equal("userid", userData.$id),
       ])
       .then((posts) => {
         if (posts) {

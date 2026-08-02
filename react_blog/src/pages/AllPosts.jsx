@@ -15,7 +15,7 @@ function AllPosts() {
       return;
     }
     appwriteService
-      .getPosts([Query.equal("userid", userData.$id)])
+      .getPosts([Query.equal("status", "active")])
       .then((posts) => {
         if (posts) {
           setPosts(posts.documents);
