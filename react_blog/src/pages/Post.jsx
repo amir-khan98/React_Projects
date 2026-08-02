@@ -40,7 +40,7 @@ export default function Post() {
           <img
             src={appwriteService.getFilePreview(post.featuredimage)}
             alt={post.title}
-            className="h-75 w-full object-cover sm:h-96 `md:h-[520px]`"
+            className="h-80 w-full object-cover sm:h-96 `md:h-[550px]`"
           />
 
           {isAuthor && (
