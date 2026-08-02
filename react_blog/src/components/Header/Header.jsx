@@ -110,7 +110,7 @@ function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="font-semibold text-gray-800"
               >
-                All Posts
+                All Blogs
               </Link>
             )}
             {!authStatus && (
